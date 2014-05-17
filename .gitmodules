@@ -1,0 +1,3 @@
+[submodule "ithkuil/ithkuil"]
+	path = ithkuil/ithkuil
+	url = ssh://git@github.com/fizyk20/ithkuil.git
