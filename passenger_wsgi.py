@@ -1,5 +1,5 @@
 import sys, os
 sys.path.append(os.getcwd())
-import ithkuil
+import ithkuil_app
 
-application = ithkuil.app
+application = ithkuil_app.app
