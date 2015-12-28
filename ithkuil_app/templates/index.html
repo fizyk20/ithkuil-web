@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block pagetitle %}Analyze a word{% endblock %}
+{% block content %}
+	<form action="{{ url_for('analyze') }}" method="get">
+		Enter the word to be analyzed: <input type="text" name="word"><br/>
+		<input type="submit" value="Analyze!">
+	</form>
+{% endblock %}

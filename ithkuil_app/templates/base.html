@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+	<title>{% block title %}Ithkuil Word Analyzer{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<div id="main">
+	<h1 id="pagetitle">{% block pagetitle %}{% endblock %}</h1>
+	{% block content %}{% endblock %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+	background-color: #FFFFD0;
+	font-family: verdana;
+	font-size: 12pt;
+}
+
+#pagetitle {
+	font-size: 18pt;
+	font-weight: bold;
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+
+#main {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	margin-top: 40px;
+}
