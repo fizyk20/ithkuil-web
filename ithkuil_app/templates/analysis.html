@@ -5,5 +5,10 @@ Analysis of "{{ word }}"
 {% endblock %}
 
 {% block content %}
-<i>{{ abbr }}</i>
+<div id="result">
+	<i>{{ abbr }}</i>
+</div>
+<div id="back">
+	<a href="{{ url_for('index') }}">Back to index</a>
+</div>
 {% endblock %}
