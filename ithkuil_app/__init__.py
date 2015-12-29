@@ -17,10 +17,11 @@ def analyze():
 	try:
 		wordObj = fromString(word)
 		abbr = wordObj.abbreviatedDescription()
+		fullDesc = wordObj.fullDescription()
 	except Exception as e:
 		return render_template('error.html', errorClass=e.__class__.__name__, errorMsg=str(e))
 	
-	return render_template("analysis.html", word=wordObj.word, abbr=abbr)
+	return render_template("analysis.html", word=wordObj.word, abbr=abbr, fullDesc=fullDesc)
 
 @app.route('/error')
 def error():

@@ -6,7 +6,30 @@ Analysis of "{{ word }}"
 
 {% block content %}
 <div id="result">
-	<i>{{ abbr }}</i>
+	<i>{{ abbr }}</i><br/>
+	<ul>
+	{% for categ in fullDesc.categories %}
+		{% if categ in fullDesc %}
+		<li>
+			<b>{{ categ }}</b>: {{ fullDesc[categ] }}
+		</li>
+		{% endif %}
+	{% endfor %}
+	{% if 'suffixes' in fullDesc %}
+		<li><b>Suffixes:</b>
+			<ul>
+			{% for suffix in fullDesc.suffixes %}
+				<li><b>{{ suffix.code }}</b>: {{ suffix.degree }}</li>
+			{% endfor %}
+			</ul>
+		</li>
+	{% endif %}
+	{% if 'other' in fullDesc %}
+		<li>
+			<b>Other:</b> {{ fullDesc.other }}
+		</li>
+	{% endif %}
+	</ul>
 </div>
 <div id="back">
 	<a href="{{ url_for('index') }}">Back to index</a>
