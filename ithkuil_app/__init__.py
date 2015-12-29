@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from ithkuil.morphology.exceptions import IthkuilException
 
 app = Flask(__name__)
 
@@ -18,7 +19,7 @@ def analyze():
 		wordObj = fromString(word)
 		abbr = wordObj.abbreviatedDescription()
 		fullDesc = wordObj.fullDescription()
-	except Exception as e:
+	except IthkuilException as e:
 		return render_template('error.html', errorClass=e.__class__.__name__, errorMsg=str(e))
 	
 	return render_template("analysis.html", word=wordObj.word, abbr=abbr, fullDesc=fullDesc)
