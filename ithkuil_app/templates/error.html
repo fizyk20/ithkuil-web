@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}
+An error occurred
+{% endblock %}
+
+{% block content %}
+<div>
+	<b>{{ errorClass }}</b>
+</div>
+<div>
+	<p>{{ errorMsg }}</p>
+	<a href="{{ url_for('index') }}">Back to index</a>
+</div>
+{% endblock %}

@@ -14,10 +14,13 @@ def analyze():
 	if not word:
 		return redirect(url_for("index"))
 	
-	wordObj = fromString(word)
-	abbr = wordObj.abbreviatedDescription()
+	try:
+		wordObj = fromString(word)
+		abbr = wordObj.abbreviatedDescription()
+	except Exception as e:
+		return render_template('error.html', errorClass=e.__class__.__name__, errorMsg=str(e))
 	
-	return render_template("analysis.html", word=word, abbr=abbr)
+	return render_template("analysis.html", word=wordObj.word, abbr=abbr)
 
 @app.route('/error')
 def error():
