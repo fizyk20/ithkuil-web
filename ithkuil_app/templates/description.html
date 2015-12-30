@@ -6,8 +6,8 @@
 
 {% block content %}
 <p>{{ categValue.description }}</p>
-{% if word %}
-<a href="{{ url_for('analyze') }}?word={{ word }}">Back</a>
+{% if text %}
+<a href="{{ url_for('analyze') }}?text={{ text }}">Back</a>
 {% else %}
 <a href="{{ url_for('index') }}">Back to index</a>
 {% endif %}

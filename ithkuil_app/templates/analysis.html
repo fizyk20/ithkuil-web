@@ -16,7 +16,7 @@ Analysis of "{{ text }}"
 		<li>
 			<b>{{ categ }}</b>: 
 			{% if word.full[categ].code %}
-			<a class="describe" href="{{ url_for('describe', code=word.full[categ].code) }}?word={{ word }}">{{ word.full[categ].name }}</a>
+			<a class="describe" href="{{ url_for('describe', code=word.full[categ].code) }}?text={{ text }}">{{ word.full[categ].name }}</a>
 			{% else %}
 			{{ word.full[categ].name }}
 			{% endif %}
