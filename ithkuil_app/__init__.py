@@ -30,7 +30,6 @@ def error():
 
 @app.route('/describe/<code>')
 def describe(code):
-	from ithkuil.morphology import ithCategValue
 	word = request.args.get('word', None)
 	catval = Session().query(ithCategValue).filter(ithCategValue.code == code).first()
 	return render_template('description.html', categValue=catval, word=word)
