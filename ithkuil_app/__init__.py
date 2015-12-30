@@ -11,18 +11,30 @@ def index():
 
 @app.route('/analyze')
 def analyze():
-	word = request.args.get('word', None)
-	if not word:
+	text = request.args.get('text', None)
+	if not text:
 		return redirect(url_for("index"))
 	
+	data = []
+	
 	try:
-		wordObj = fromString(word)
-		abbr = wordObj.abbreviatedDescription()
-		fullDesc = wordObj.fullDescription()
+		words = text.replace('.',' ').replace(',',' ').replace('!',' ').replace('?',' ').lower().split()
+		previousCarrier = False		# remembers if the previous word had a carrier root
+		for word in words:
+			if not previousCarrier:
+				wordObj = fromString(word)
+				abbr = wordObj.abbreviatedDescription()
+				fullDesc = wordObj.fullDescription()
+				if 'Cr' in wordObj.slots and wordObj.slots['Cr'] == 'p':
+					previousCarrier = True
+				data.append({ 'word': wordObj.word, 'abbr': abbr, 'full': fullDesc })
+			else:
+				data.append({ 'word': word, 'abbr': '"Carried" word' })
+				previousCarrier = False
 	except IthkuilException as e:
 		return render_template('error.html', errorClass=e.__class__.__name__, errorMsg=str(e))
 	
-	return render_template("analysis.html", word=wordObj.word, abbr=abbr, fullDesc=fullDesc)
+	return render_template("analysis.html", text=text, data=data)
 
 @app.route('/error')
 def error():
@@ -30,7 +42,7 @@ def error():
 
 @app.route('/describe/<code>')
 def describe(code):
-	word = request.args.get('word', None)
+	text = request.args.get('text', None)
 	catval = Session().query(ithCategValue).filter(ithCategValue.code == code).first()
-	return render_template('description.html', categValue=catval, word=word)
+	return render_template('description.html', categValue=catval, text=text)
 	

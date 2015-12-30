@@ -1,41 +1,46 @@
 {% extends "base.html" %}
 
 {% block pagetitle %}
-Analysis of "{{ word }}"
+Analysis of "{{ text }}"
 {% endblock %}
 
 {% block content %}
+{% for word in data %}
 <div id="result">
-	<i>{{ abbr }}</i><br/>
+	<p class="word">{{ word.word }}</p>
+	<p class="abbr">{{ word.abbr }}</p>
+	{% if word.full %}
 	<ul>
-	{% for categ in fullDesc.categories %}
-		{% if categ in fullDesc %}
+	{% for categ in word.full.categories %}
+		{% if categ in word.full %}
 		<li>
 			<b>{{ categ }}</b>: 
-			{% if fullDesc[categ].code %}
-			<a class="describe" href="{{ url_for('describe', code=fullDesc[categ].code) }}?word={{ word }}">{{ fullDesc[categ].name }}</a>
+			{% if word.full[categ].code %}
+			<a class="describe" href="{{ url_for('describe', code=word.full[categ].code) }}?word={{ word }}">{{ word.full[categ].name }}</a>
 			{% else %}
-			{{ fullDesc[categ].name }}
+			{{ word.full[categ].name }}
 			{% endif %}
 		</li>
 		{% endif %}
 	{% endfor %}
-	{% if 'suffixes' in fullDesc %}
+	{% if 'suffixes' in word.full %}
 		<li><b>Suffixes:</b>
 			<ul>
-			{% for suffix in fullDesc.suffixes %}
+			{% for suffix in word.full.suffixes %}
 				<li><b>{{ suffix.code }}</b>: {{ suffix.degree }}</li>
 			{% endfor %}
 			</ul>
 		</li>
 	{% endif %}
-	{% if 'other' in fullDesc %}
+	{% if 'other' in word.full %}
 		<li>
-			<b>Other:</b> {{ fullDesc.other }}
+			<b>Other:</b> {{ word.full.other }}
 		</li>
 	{% endif %}
 	</ul>
+	{% endif %}
 </div>
+{% endfor %}
 <div id="back">
 	<a href="{{ url_for('index') }}">Back to index</a>
 </div>

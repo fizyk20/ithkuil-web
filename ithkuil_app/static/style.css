@@ -18,6 +18,36 @@ body {
 	margin-top: 40px;
 }
 
+#sentence {
+	width: 600px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
 #back {
 	margin-top: 5px;
+}
+
+#result {
+	padding-left: 10pt;
+	margin: 2pt;
+	border: 1pt solid #C0C0C0;
+}
+
+#result p.word {
+	font-weight: bold;
+	font-size: 13pt;
+}
+
+#result p.abbr {
+	font-style: italic;
+}
+
+#result a {
+	text-decoration: none;
+	font-color: #0000A0;
+}
+
+#result a:hover {
+	text-decoration: underline;
 }

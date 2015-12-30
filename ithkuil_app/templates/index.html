@@ -2,7 +2,8 @@
 {% block pagetitle %}Analyze a word{% endblock %}
 {% block content %}
 	<form action="{{ url_for('analyze') }}" method="get">
-		Enter the word to be analyzed: <input type="text" name="word"><br/>
+		Enter the sentence to be analyzed:<br/>
+		<input type="text" name="text" id="sentence"><br/>
 		<input type="submit" value="Analyze!">
 	</form>
 	<div style="margin-top:20px;font-size:10pt">
