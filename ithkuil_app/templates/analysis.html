@@ -11,7 +11,12 @@ Analysis of "{{ word }}"
 	{% for categ in fullDesc.categories %}
 		{% if categ in fullDesc %}
 		<li>
-			<b>{{ categ }}</b>: <a class="describe" href="{{ url_for('describe', code=fullDesc[categ].code) }}?word={{ word }}">{{ fullDesc[categ].name }}</a>
+			<b>{{ categ }}</b>: 
+			{% if fullDesc[categ].code %}
+			<a class="describe" href="{{ url_for('describe', code=fullDesc[categ].code) }}?word={{ word }}">{{ fullDesc[categ].name }}</a>
+			{% else %}
+			{{ fullDesc[categ].name }}
+			{% endif %}
 		</li>
 		{% endif %}
 	{% endfor %}
