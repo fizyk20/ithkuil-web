@@ -5,4 +5,22 @@
 		Enter the word to be analyzed: <input type="text" name="word"><br/>
 		<input type="submit" value="Analyze!">
 	</form>
+	<div style="margin-top:20px;font-size:10pt">
+	Some hints about input:
+	<ul>
+		<li>The "apostrophe" can be expressed with two characters: ' and ’</li>
+		<li>The aspiration character may be expressed both by unicode upper h (ʰ) and just "h", so for example both "pʰ" and "ph" will work</li>
+		<li>The tones may be expressed by the following:
+			<ul>
+				<li>Rising: /</li>
+				<li>Falling: \</li>
+				<li>Rising-falling: ^</li>
+				<li>Falling-rising: ˇ or \/ (backslash-slash)</li>
+				<li>High: ¯ or -</li>
+				<li>Low: _</li>
+			</ul>
+		</li>
+		<li>Other characters have to be entered exactly for now, but this may change in the future.</li>
+	</ul>
+	</div>
 {% endblock %}
