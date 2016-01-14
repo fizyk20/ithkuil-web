@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from ithkuil.morphology.exceptions import IthkuilException
-from ithkuil.morphology.data import ithCategValue
-from ithkuil.morphology import Session, fromString
+from ithkuil.morphology.database import ithCategValue, Session
+from ithkuil.morphology.words import Factory
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def analyze():
 		previousCarrier = False		# remembers if the previous word had a carrier root
 		for word in words:
 			if not previousCarrier:
-				wordObj = fromString(word)
+				wordObj = Factory.parseWord(word)
 				abbr = wordObj.abbreviatedDescription()
 				fullDesc = wordObj.fullDescription()
 				if 'Cr' in wordObj.slots and wordObj.slots['Cr'] == 'p':
