@@ -8,4 +8,4 @@ Current features:
 - abbreviated and full descriptions of the results
 - descriptions of the meanings of parts of the word copied from [ithkuil.net](http://ithkuil.net)
 
-A live version is available at [ithkuil-tools.tk](http://ithkuil-tools.tk)
+A live version is available at [ithkuil.ebvalaim.pl](https://ithkuil.ebvalaim.pl)
